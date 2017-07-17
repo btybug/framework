@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>framework</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/css.css" media="all" type="text/css" rel="stylesheet" >
+<link href="css/freamwork.css" media="all" type="text/css" rel="stylesheet" >
+  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/framework.js"></script>
+  <style data-savedcss='framework'></style>
+</head>
+<body>
+
+  <div class="layoutoptionleft">
+    <div class="optionbox">
+      <h2>Grid system</h2>
+      <ul>
+        <li>
+          <label>number of columns</label>
+          <input type="range" max="20" min="12" step="2" onchange="gridcolumn.value=value" data-tylefunction="gridcolumn" value="12"> <output id="gridcolumn"></output>
+        </li>
+        <li>
+          <label>gutter-width</label>
+          <input type="range" max="40" min="0" step="1" onchange="guttercolumn.value=value" data-tylefunction="guttercolumn" value="10"> <output id="guttercolumn"></output>
+        </li>
+      </ul>
+      
+      <h3>breaking points</h3>
+      <ul>
+        <li>
+          <label>screen Mobile landscape</label>
+          <input type="range" max="768" min="480" step="1" onchange="mobiellandscape.value=value" data-breaking="msm" value="480"> <output id="mobiellandscape"></output>
+        </li>
+          <li>
+          <label>screen tablet portrait </label>
+          <input type="range" max="992" min="768" step="1" onchange="tabletportrait.value=value" data-breaking="sm" value="768"> <output id="tabletportrait"></output>
+        </li>
+        <li>
+          <label>screen tablet landscape</label>
+          <input type="range" max="1050" min="992" step="1" onchange="tabletlandscape.value=value" data-breaking="md" value="992"> <output id="tabletlandscape"></output>
+        </li>
+        <li>
+          <label>screen desktop</label>
+          <input type="range" max="2000" min="1050" step="1" onchange="desktop.value=value" value="1200" data-breaking="lg"> <output id="desktop"></output>
+        </li>
+      </ul>
+    </div>
+    
+    
+    
+  </div>
+  <div class="laypreview">
+    <div class="maincontainer-fluid preview-grid" data-preview="grid">
+     
+      <div class="row">
+        <div class="gridcol grid-12"><div class="content">Grid 12</div></div>
+      </div>
+      <div class="row">
+        <div class="gridcol grid-6 "><div class="content">Grid 6</div></div>
+        <div class="gridcol grid-6"><div class="content">Grid 6</div></div>
+      </div>
+      <div class="row">
+        <div class="gridcol grid-4">Grid 4</div>
+        <div class="gridcol grid-4">Grid 4</div>
+        <div class="gridcol grid-4">Grid 4</div>
+      </div>
+       <div class="row">
+        <div class="gridcol grid-3">Grid 3</div>
+        <div class="gridcol grid-3">Grid 3</div>
+        <div class="gridcol grid-3">Grid 3</div>
+        <div class="gridcol grid-3">Grid 3</div>
+      </div>
+      <div class="row">
+        <div class="gridcol grid-2">Grid 2</div>
+        <div class="gridcol grid-2">Grid 2</div>
+        <div class="gridcol grid-2">Grid 2</div>
+        <div class="gridcol grid-2">Grid 2</div>
+        <div class="gridcol grid-2">Grid 2</div>
+        <div class="gridcol grid-2">Grid 2</div>
+      </div>
+      <div class="row">
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+        <div class="gridcol grid-1">Grid 1</div>
+      </div>
+      <div class="row">
+          <div class="gridcol grid-10">Grid 10</div>
+          <div class="gridcol grid-2">Grid 2</div>
+      </div>
+      <div class="row">
+          <div class="gridcol grid-1">Grid 1</div>
+          <div class="gridcol grid-11">Grid 11</div>
+      </div>
+      <div class="row">
+          <div class="gridcol grid-2">Grid 2</div>
+          <div class="gridcol grid-10">Grid 10</div>
+      </div>
+      <div class="row">
+          <div class="gridcol grid-3">Grid 3</div>
+          <div class="gridcol grid-9">Grid 9</div>
+      </div>
+      <div class="row">
+          <div class="gridcol grid-4">Grid 4</div>
+          <div class="gridcol grid-8">Grid 8</div>
+      </div>
+       <div class="row">
+          <div class="gridcol grid-5">Grid 5</div>
+          <div class="gridcol grid-7">Grid 7</div>
+        </div>
+        
+        <div class="row">
+          <div class="gridcol grid-2">Grid 2</div>
+          <div class="gridcol grid-8">Grid 8</div>
+          <div class="gridcol grid-2">Grid 2</div>
+       </div>
+       <div class="row">
+          <div class="gridcol grid-3">Grid 3</div>
+          <div class="gridcol grid-7">Grid 7</div>
+          <div class="gridcol grid-2">Grid 2</div>
+       </div>
+        <div class="row">
+          <div class="gridcol grid-3">Grid 3</div>
+          <div class="gridcol grid-6">Grid 6</div>
+          <div class="gridcol grid-3">Grid 3</div>
+       </div>
+       <div class="row">
+          <div class="gridcol grid-4">Grid 4</div>
+          <div class="gridcol grid-6">Grid 6</div>
+          <div class="gridcol grid-2">Grid 3</div>
+       </div>
+    </div>
+    
+    <div class="infor" style="padding-top: 50px;"></div>
+  </div>
+  <script type="template" data-gutter="gutter">
+      .row {
+          margin-right: -{gutter}px;
+          margin-left: -{gutter}px;
+       }
+       .gridcol {
+            padding-right: {gutter}px;
+            padding-left: {gutter}px;
+          }
+      .maincontainer, .maincontainer-fluid {
+          padding-right: {gutter}px;
+          padding-left: {gutter}px;
+        }
+        .gridruls {
+          padding:0 {gutter}px;
+        }
+  </script>
+</body>
+</html>

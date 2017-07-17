@@ -1,0 +1,1 @@
+var j={{json}};String.prototype.ra=function(a, b){return this.split(a).join(b);};for (var p in j) {if (j.hasOwnProperty(p)) {var el = document.getElementsByClassName(p);if(typeof jQuery(el) != 'undefined')jQuery(el).removeClass(p).addClass(j[p]);}}

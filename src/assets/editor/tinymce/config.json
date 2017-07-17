@@ -1,0 +1,7 @@
+{
+  "name": "TinyMCE",
+  "self_type" : "add-on",
+  "type": "editor",
+  "preview": "preview.blade.php",
+  "shortcode" : "mce"
+}
