@@ -6,7 +6,7 @@
  * Time: 2:24 PM
  */
 
-namespace App\Modules\Framework\Models;
+namespace Sahakavatar\Framework\Models;
 
 use File;
 use Validator;

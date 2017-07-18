@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Framework\Providers;
+namespace Sahakavatar\Framework\Providers;
 
 use App\Modules\Framework\Models\Optimzation;
-use Caffeinated\Modules\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
 {

@@ -6,7 +6,7 @@
  * Time: 11:35
  */
 
-namespace App\Modules\Framework\Models;
+namespace Sahakavatar\Framework\Models;
 
 
 class Collection

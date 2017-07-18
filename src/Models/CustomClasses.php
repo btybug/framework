@@ -6,7 +6,7 @@
  * Time: 9:38 PM
  */
 
-namespace App\Modules\Framework\Models;
+namespace Sahakavatar\Framework\Models;
 
 
 use Illuminate\Database\Eloquent\Model;

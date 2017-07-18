@@ -6,7 +6,7 @@
  * Time: 11:24 PM
  */
 
-namespace App\Modules\Framework\Http\Controllers;
+namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Modules\Framework\Models\Collections;
 use App\Modules\Framework\Models\Framework;

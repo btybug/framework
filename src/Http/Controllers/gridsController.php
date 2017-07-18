@@ -6,7 +6,7 @@
  * Time: 3:39 PM
  */
 
-namespace App\Modules\Framework\Http\Controllers;
+namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Framework\Models\CssCompiliator;

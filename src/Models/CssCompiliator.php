@@ -6,7 +6,7 @@
  * Time: 2:18 PM
  */
 
-namespace App\Modules\Framework\Models;
+namespace Sahakavatar\Framework\Models;
 
 use App\Modules\Framework\Models\StylesBulder;
 

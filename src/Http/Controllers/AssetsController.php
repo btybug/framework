@@ -6,7 +6,7 @@
  * Time: 10:41 AM
  */
 
-namespace App\Modules\Framework\Http\Controllers;
+namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Core\CmsItemReader;
 use App\Modules\Framework\Models\Assets;

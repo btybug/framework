@@ -6,7 +6,7 @@
  * Time: 1:37 PM
  */
 
-namespace App\Modules\Framework\Models;
+namespace Sahakavatar\Framework\Models;
 
 
 class Assets
