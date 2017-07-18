@@ -14,7 +14,7 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include app_path('Modules'.DS.'Framework'.DS.'FwFunctions'.DS.'functions.php');
+        include __DIR__.'/../'.DS.'FwFunctions'.DS.'functions.php';
         BBaddShortcode('FW-get-classes', 'FWgetClasses');
         BBaddShortcode('FW-get', 'FWget');
 
