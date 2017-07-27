@@ -10,13 +10,13 @@ namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Core\CmsItemReader;
 use App\Http\Controllers\Controller;
-use App\Modules\Framework\Models\Classes;
-use App\Modules\Framework\Models\Collections;
-use App\Modules\Framework\Models\Components;
-use App\Modules\Framework\Models\CustomClasses;
-use App\Modules\Framework\Models\Framework;
-use App\Modules\Framework\Models\Icons;
-use App\Modules\Framework\Models\StylesBulder;
+use Sahakavatar\Framework\Models\Classes;
+use Sahakavatar\Framework\Models\Collections;
+use Sahakavatar\Framework\Models\Components;
+use Sahakavatar\Framework\Models\CustomClasses;
+use Sahakavatar\Framework\Models\Framework;
+use Sahakavatar\Framework\Models\Icons;
+use Sahakavatar\Framework\Models\StylesBulder;
 use App\Modules\Modules\Models\Upload;
 use Illuminate\Http\Request;
 
@@ -49,7 +49,7 @@ class PlugunController extends Controller
     }
 
     public function activateAddOn(Request $request) {
-        $className = $request->type == 'classes' ? 'App\Modules\Framework\Models\Custom' . ucfirst($request->type) : 'App\Modules\Framework\Models\\' . ucfirst($request->type);
+        $className = $request->type == 'classes' ? 'Sahakavatar\Framework\Models\Custom' . ucfirst($request->type) : 'Sahakavatar\Framework\Models\\' . ucfirst($request->type);
         $item = $className::find($request->id);
         $item->active = self::ACTIVE_VERSION;
         $result = $item->save() ? true : false;
@@ -57,7 +57,7 @@ class PlugunController extends Controller
     }
 
     public function inactivateAddOn(Request $request) {
-        $className = $request->type == 'classes' ? 'App\Modules\Framework\Models\Custom' . ucfirst($request->type) : 'App\Modules\Framework\Models\\' . ucfirst($request->type);
+        $className = $request->type == 'classes' ? 'Sahakavatar\Framework\Models\Custom' . ucfirst($request->type) : 'Sahakavatar\Framework\Models\\' . ucfirst($request->type);
         $item = $className::find($request->id);
         $item->active = self::INACTIVE_VERSION;
         $result = $item->save() ? true : false;
@@ -65,7 +65,7 @@ class PlugunController extends Controller
     }
 
     public function deleteAddOn(Request $request) {
-        $className = $request->type == 'classes' ? 'App\Modules\Framework\Models\Custom' . ucfirst($request->type) : 'App\Modules\Framework\Models\\' . ucfirst($request->type);
+        $className = $request->type == 'classes' ? 'Sahakavatar\Framework\Models\Custom' . ucfirst($request->type) : 'Sahakavatar\Framework\Models\\' . ucfirst($request->type);
         $item = $className::where('id', $request->id)->where('active', self::INACTIVE_VERSION)->first();
         if($request->type == 'framework') {
             $ds = DS;

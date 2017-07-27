@@ -8,13 +8,13 @@
 
 namespace Sahakavatar\Framework\Models;
 
-//use App\helpers\helpers;
+//use Sahakavatar\Cms\Helpers\helpers;
 use Illuminate\Database\Eloquent\Model;
 use Zipper;
 
 /**
  * Class Framework
- * @package App\Modules\Framework\Models
+ * @package Sahakavatar\Framework\Models
  */
 class Framework extends Model
 {

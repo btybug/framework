@@ -8,8 +8,8 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\Modules\Framework\Models\Collections;
-use App\Modules\Framework\Models\Framework;
+use Sahakavatar\Framework\Models\Collections;
+use Sahakavatar\Framework\Models\Framework;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

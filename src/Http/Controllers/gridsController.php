@@ -9,7 +9,7 @@
 namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Framework\Models\CssCompiliator;
+use Sahakavatar\Framework\Models\CssCompiliator;
 use Illuminate\Http\Request;
 
 

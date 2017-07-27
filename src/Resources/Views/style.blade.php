@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'framework'])
+@extends('cms::layouts.mTabs',['index'=>'framework'])
 @section('tab')
     <div class="row list_222">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -208,17 +208,17 @@
 @section('CSS')
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/new-store.css') !!}
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/style_cube.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-select/css/bootstrap-select.min.css') !!}
-    {!! HTML::style('app\Modules\Framework\Resources\Views\assets\css\styles.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
-    {!! HTML::style('/resources/assets/js/framework/frameworkstudio.css') !!}
+    {!! HTML::style('/js/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {!! HTML::style('Sahakavatar\Framework\Resources\Views\assets\css\styles.css') !!}
+    {!! HTML::style('/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('/js/framework/frameworkstudio.css') !!}
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
-    {!! HTML::script('/resources/assets/js/bootstrap-select/js/bootstrap-select.min.js') !!}
-    {!! HTML::script('/resources/assets/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!}
-    {!! HTML::script('/resources/assets/js/ace-editor/ace.js') !!}
-    {!! HTML::script('/resources/assets/js/framework/framework.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('/js/bootstrap-select/js/bootstrap-select.min.js') !!}
+    {!! HTML::script('/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!}
+    {!! HTML::script('/js/ace-editor/ace.js') !!}
+    {!! HTML::script('/js/framework/framework.js') !!}
     <script>
         Dropzone.options.myAwesomeDropzone = {
             init: function () {

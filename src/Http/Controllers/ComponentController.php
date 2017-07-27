@@ -9,10 +9,10 @@
 namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Framework\Models\CssCompiliator;
-use App\Modules\Framework\Models\StylesBulder;
+use Sahakavatar\Framework\Models\CssCompiliator;
+use Sahakavatar\Framework\Models\StylesBulder;
 use Illuminate\Http\Request;
-use App\Modules\Framework\Models\Components;
+use Sahakavatar\Framework\Models\Components;
 
 class ComponentController extends Controller
 {

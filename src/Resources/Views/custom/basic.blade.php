@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'version'])
+@extends('cms::layouts.mTabs',['index'=>'version'])
 @section('tab')
     <div class="row list_222">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -161,13 +161,13 @@
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/css/styles.css') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/framework/frameworkstudio.css') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/grids/assets/css/freamwork.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-select/css/bootstrap-select.min.css') !!}
-    {!! HTML::style('/resources/assets/js/animate/css/animate.css') !!}
+    {!! HTML::style('/js/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {!! HTML::style('/js/animate/css/animate.css') !!}
     {!! HTML::style('/app/Modules/Studios/Resources/Views/assets/text/css/text-studio.css?v=3.20') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/css/styles.css') !!}
     {!! HTML::style('public/framework/base.min.css') !!}
-    {!! HTML::style('/resources/assets/css/icon-buttons.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('/css/icon-buttons.css') !!}
+    {!! HTML::style('/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
     {!! HTML::style('/app/Modules/Studios/Resources/Views/assets/color/css/color-builder.css?v=0.20') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/framework/frameworkstudio.css') !!}
     {!! HTML::style('/app/Modules/Studios/Resources/Views/assets/css/styles.css') !!}
@@ -175,12 +175,12 @@
 
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
-    {!! HTML::script('/resources/assets/js/icon-plugin.js?v=0.50" type="text/javascript') !!}
-    {!! HTML::script('/resources/assets/js/bootstrap-select/js/bootstrap-select.min.js') !!}
-    {!! HTML::script('/resources/assets/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!}
-    {!! HTML::script('/resources/assets/js/ace-editor/ace.js') !!}
-    {!! HTML::script('/resources/assets/js/icon-plugin.js?v=0.50" type="text/javascript') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('/js/icon-plugin.js?v=0.50" type="text/javascript') !!}
+    {!! HTML::script('/js/bootstrap-select/js/bootstrap-select.min.js') !!}
+    {!! HTML::script('/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') !!}
+    {!! HTML::script('/js/ace-editor/ace.js') !!}
+    {!! HTML::script('/js/icon-plugin.js?v=0.50" type="text/javascript') !!}
     <script>
         var dd = console.debug;
         Dropzone.options.myAwesomeDropzone = {

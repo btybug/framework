@@ -52,11 +52,11 @@
 </script>
 
 @push('CSS')
-{!! HTML::style('app\Modules\Framework\Resources\Views\assets\css\styles.css') !!}
+{!! HTML::style('Sahakavatar\Framework\Resources\Views\assets\css\styles.css') !!}
 @endpush
 
 @push('javascript')
-{!! HTML::script('/resources/assets/js/less.js') !!}
+{!! HTML::script('/js/less.js') !!}
 {!! HTML::script('app/Modules/Framework/Resources/Views/assets/framework/textstudio.js') !!}
 
 @endpush

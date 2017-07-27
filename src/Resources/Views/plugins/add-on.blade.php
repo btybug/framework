@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'framework_plugins'])
+@extends('cms::layouts.mTabs',['index'=>'framework_plugins'])
 @section('tab')
     <div class="container">
         <h2>Add-Ons</h2>
@@ -18,17 +18,17 @@
                 <tr>
                     <td>{!! isset($addOn['package_name']) ? $addOn['package_name'] : '' !!}</td>
                     <td>{!! isset($addOn['name']) ? $addOn['name'] : $addOn['version'] !!}</td>
-                    <td>{!! $addOn['data_type'] == 'collections' ? $addOn['type'] . ' collections' : \App\Modules\Framework\Models\Framework::getDataType($addOn['data_type']) !!}</td>
-                    <td>{!! isset($addOn['active']) ? \App\Modules\Framework\Models\Framework::getStatus($addOn['active']) : 'N/A' !!}</td>
+                    <td>{!! $addOn['data_type'] == 'collections' ? $addOn['type'] . ' collections' : \Sahakavatar\Framework\Models\Framework::getDataType($addOn['data_type']) !!}</td>
+                    <td>{!! isset($addOn['active']) ? \Sahakavatar\Framework\Models\Framework::getStatus($addOn['active']) : 'N/A' !!}</td>
                     <td>{!! $addOn['created_at'] !!}</td>
                     <td>
-                        @if($addOn['active'] === \App\Modules\Framework\Models\Framework::INACTIVE_VERSION)
+                        @if($addOn['active'] === \Sahakavatar\Framework\Models\Framework::INACTIVE_VERSION)
                             <a data-url="{!! url('/admin/framework/plugins/activate-add-on') !!}" data-type="{!! $addOn['data_type'] !!}" data-id="{!! $addOn['id'] !!}" class="activate-add-on btn btn-warning" title="Activate"><i class="fa fa-power-off"></i></a>
                         @else
                             <a data-url="{!! url('/admin/framework/plugins/inactivate-add-on') !!}" data-type="{!! $addOn['data_type'] !!}" data-id="{!! $addOn['id'] !!}" class="inactivate-add-on btn btn-success" title="Inactivate"><i class="fa fa-power-off"></i></a>
                         @endif
 
-                        @if($addOn['active'] === \App\Modules\Framework\Models\Framework::INACTIVE_VERSION)
+                        @if($addOn['active'] === \Sahakavatar\Framework\Models\Framework::INACTIVE_VERSION)
                             <a class="delete-add-on btn btn-danger" data-url="{!! url('/admin/framework/plugins/delete-add-on') !!}" data-type="{!! $addOn['data_type'] !!}" data-id="{!! $addOn['id'] !!}"><i class="fa fa-trash-o"></i></a>
                         @endif
                     </td>
@@ -68,7 +68,7 @@
 
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
     <script>
         $(document).ready(function() {
 

@@ -8,9 +8,9 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\Modules\Framework\Models\Assets;
-use App\Modules\Framework\Models\Components;
-use App\Modules\Framework\Models\StylesBulder;
+use Sahakavatar\Framework\Models\Assets;
+use Sahakavatar\Framework\Models\Components;
+use Sahakavatar\Framework\Models\StylesBulder;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 

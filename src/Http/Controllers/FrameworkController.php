@@ -11,17 +11,17 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\Http\Controllers\Controller;
-use App\Modules\Framework\Models\Classes;
-use App\Modules\Framework\Models\Collection;
-use App\Modules\Framework\Models\Collections;
-use App\Modules\Framework\Models\CssCompiliator;
-use App\Modules\Framework\Models\CustomClasses;
-use App\Modules\Framework\Models\Framework;
-use App\Modules\Framework\Models\FW_INPUT;
-use App\Modules\Framework\Models\StylesBulder;
-use App\Repositories\AdminsettingRepository as Settings;
+use Sahakavatar\Framework\Models\Classes;
+use Sahakavatar\Framework\Models\Collection;
+use Sahakavatar\Framework\Models\Collections;
+use Sahakavatar\Framework\Models\CssCompiliator;
+use Sahakavatar\Framework\Models\CustomClasses;
+use Sahakavatar\Framework\Models\Framework;
+use Sahakavatar\Framework\Models\FW_INPUT;
+use Sahakavatar\Framework\Models\StylesBulder;
+use Sahakavatar\Settings\Repository\AdminsettingRepository as Settings;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use Validator;

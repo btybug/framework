@@ -35,7 +35,7 @@ class= {!!"$type $type-$p" !!}
 </div><!-- container -->
 
 </body>
-{!! Html::script('resources/assets/js/jquery-2.1.4.min.js') !!}
+{!! Html::script('js/jquery-2.1.4.min.js') !!}
 <script>
     $(document).ready(function(){
 

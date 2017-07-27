@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'framework'])
+@extends('cms::layouts.mTabs',['index'=>'framework'])
 @section('tab')
 
 @stop

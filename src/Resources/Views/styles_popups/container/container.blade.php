@@ -327,7 +327,7 @@
     //        $('.frameworksuboptionbox').css("height", modalHeight - 85);
     //    });
 </script>
-{!! HTML::script('/resources/assets/js/less.js') !!}
+{!! HTML::script('/js/less.js') !!}
 {!! HTML::script('app/Modules/Framework/Resources/Views/assets/framework/contianer-studio.js') !!}
 
 @endpush

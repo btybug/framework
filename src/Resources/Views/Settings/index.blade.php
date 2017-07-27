@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'fw_settings'])
+@extends('cms::layouts.mTabs',['index'=>'fw_settings'])
 @section('tab')
     {!! Form::open(['method'=>'POST']) !!}
     <div class="panel panel-default">
@@ -31,8 +31,8 @@
                 <label class="form-check-label col-md-12" for="select_local" style="font-weight: bold;">
                     Select active master collection
                 </label>
-                <div class="col-md-6"> {!! Form::radio('default', 0, !\App\Modules\Framework\Models\Collections::checkMasterDefaultIsActive()) !!} {!! Form::select('collection_id', $collections, $activeCollection, ['class'=>'form-control select_inline']) !!}</div>
-                    <div class="col-md-3">{!! Form::radio('default', 1, \App\Modules\Framework\Models\Collections::checkMasterDefaultIsActive()) !!}My Configuration</div>
+                <div class="col-md-6"> {!! Form::radio('default', 0, !\Sahakavatar\Framework\Models\Collections::checkMasterDefaultIsActive()) !!} {!! Form::select('collection_id', $collections, $activeCollection, ['class'=>'form-control select_inline']) !!}</div>
+                    <div class="col-md-3">{!! Form::radio('default', 1, \Sahakavatar\Framework\Models\Collections::checkMasterDefaultIsActive()) !!}My Configuration</div>
                 <div class="col-md-3">{!! Form::select('master_collection_default',$defaultMasterCollections,null, ['class'=>'form-control select_inline']) !!} </div>
             </div>
 

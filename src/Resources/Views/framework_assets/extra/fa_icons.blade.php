@@ -1,5 +1,5 @@
 
-<div data-icolist="ficon" data-iconjson='{!! \App\Modules\Framework\Models\Assets::fontAvefomeJson() !!}'></div>
+<div data-icolist="ficon" data-iconjson='{!! \Sahakavatar\Framework\Models\Assets::fontAvefomeJson() !!}'></div>
 
   
     <script type="template" data-template="iconitem">

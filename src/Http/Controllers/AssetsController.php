@@ -8,8 +8,7 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\Core\CmsItemReader;
-use App\Modules\Framework\Models\Assets;
+use Sahakavatar\Framework\Models\Assets;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 

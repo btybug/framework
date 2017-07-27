@@ -284,7 +284,7 @@
                                                     </li>
 </script>
  @push('javascript')
-  {!! HTML::script('/resources/assets/js/less.js') !!}
+  {!! HTML::script('/js/less.js') !!}
   {!! HTML::script('app/Modules/Framework/Resources/Views/assets/framework/collections.js') !!}
 
 @endpush

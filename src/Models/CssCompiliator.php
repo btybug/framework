@@ -8,7 +8,7 @@
 
 namespace Sahakavatar\Framework\Models;
 
-use App\Modules\Framework\Models\StylesBulder;
+use Sahakavatar\Framework\Models\StylesBulder;
 
 class CssCompiliator extends StylesBulder
 {

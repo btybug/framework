@@ -2,7 +2,7 @@
 
 namespace Sahakavatar\Framework\Providers;
 
-use App\Modules\Framework\Models\Optimzation;
+use Sahakavatar\Framework\Models\Optimzation;
 use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider

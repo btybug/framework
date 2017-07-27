@@ -254,7 +254,7 @@
 @push('css')
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/new-store.css') !!}
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/style_cube.css') !!}
-    {!! HTML::style('/resources/assets/js/animate/css/animate.css') !!}
+    {!! HTML::style('/js/animate/css/animate.css') !!}
 
 
     {!! HTML::style('app/Modules/Framework/Resources/Views/grids/assets/css/css.css') !!}

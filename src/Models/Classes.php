@@ -11,7 +11,7 @@ namespace Sahakavatar\Framework\Models;
 
 /**
  * Class Classes
- * @package App\Modules\Framework\Models
+ * @package Sahakavatar\Framework\Models
  */
 class Classes
 {

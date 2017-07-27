@@ -8,9 +8,9 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\Modules\Framework\Models\Classes;
-use App\Modules\Framework\Models\CustomClasses;
-use App\Modules\Framework\Models\Framework;
+use Sahakavatar\Framework\Models\Classes;
+use Sahakavatar\Framework\Models\CustomClasses;
+use Sahakavatar\Framework\Models\Framework;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

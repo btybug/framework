@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'framework_plugins'])
+@extends('cms::layouts.mTabs',['index'=>'framework_plugins'])
 @section('tab')
     <div class="container">
         <h2>Framework Versions</h2>
@@ -29,7 +29,7 @@
 
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
 @stop
 
 

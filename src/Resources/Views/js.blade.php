@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'framework'])
+@extends('cms::layouts.mTabs',['index'=>'framework'])
 @section('tab')
 
     {{--<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cms_module_list module_list_1">--}}
@@ -92,11 +92,11 @@
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/new-store.css') !!}
     {!! HTML::style('app/Modules/Resources/Resources/assets/css/style_cube.css') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/css/styles.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {!! HTML::style('/js/bootstrap-select/css/bootstrap-select.min.css') !!}
 @stop
 @section('JS')
-    {!! HTML::script('resources/assets/js/dropzone/js/dropzone.js') !!}
-    {!! HTML::script('/resources/assets/js/bootstrap-select/js/bootstrap-select.min.js') !!}
+    {!! HTML::script('js/dropzone/js/dropzone.js') !!}
+    {!! HTML::script('/js/bootstrap-select/js/bootstrap-select.min.js') !!}
     
     <script>
         Dropzone.options.myAwesomeDropzone = {

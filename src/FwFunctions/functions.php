@@ -6,7 +6,7 @@ function FWgetClasses(){
     return '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Classes Modal</button>';
 }
 function FWget($data){
-    $version = \App\Modules\Framework\Models\Framework::active()->first();
+    $version = \Sahakavatar\Framework\Models\Framework::active()->first();
     $masterCollections= count($version) ? $version->getMasterCollectionsByType($data['tag']) : [];
     $collections = ($version) ? $version->getCollectionsByType($data['tag']) : [];
     $name=(isset($data['name'])?$data["name"]:null);
