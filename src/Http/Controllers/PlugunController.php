@@ -8,7 +8,7 @@
 
 namespace Sahakavatar\Framework\Http\Controllers;
 
-use App\Core\CmsItemReader;
+use Sahakavatar\Cms\Services\CmsItemReader;
 use App\Http\Controllers\Controller;
 use Sahakavatar\Framework\Models\Classes;
 use Sahakavatar\Framework\Models\Collections;
@@ -17,7 +17,7 @@ use Sahakavatar\Framework\Models\CustomClasses;
 use Sahakavatar\Framework\Models\Framework;
 use Sahakavatar\Framework\Models\Icons;
 use Sahakavatar\Framework\Models\StylesBulder;
-use App\Modules\Modules\Models\Upload;
+use Sahakavatar\Modules\Models\Models\Upload;
 use Illuminate\Http\Request;
 
 

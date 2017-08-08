@@ -223,7 +223,7 @@
             </div>
         </div>
     </div>
-    @include('_partials.delete_modal')
+    @include('cms::_partials.delete_modal')
     @include('framework::_partials.create_collection')
     @include('framework::_partials.apply_classes')
 @stop

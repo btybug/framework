@@ -127,7 +127,7 @@
     {!! Html::style('app/Modules/Framework/Resources/Views/assets/css/styles.css') !!}
     {!! Html::style('app/Modules/Framework/Resources/Views/assets/base.min.css') !!}
     {!! HTML::style('app/Modules/Framework/Resources/Views/assets/framework/frameworkstudio.css') !!}
-    {!! HTML::style('/resources/assets/frameworkcss/frameworkcss.less') !!}
+    {!! HTML::style('frameworkcss/frameworkcss.less') !!}
     {!! HTML::style('/js/bootstrap-select/css/bootstrap-select.min.css') !!}
     <style id="savedcss" data-role="savedcss">
     </style>

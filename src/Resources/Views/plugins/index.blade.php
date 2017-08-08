@@ -34,7 +34,7 @@
         </tbody>
     </table>
 </div>
-@include('_partials.delete_modal')
+@include('cms::_partials.delete_modal')
 @include('framework::_partials.upload_custom_classes')
 @stop
 @section('CSS')
