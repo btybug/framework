@@ -3,6 +3,7 @@ namespace Sahakavatar\Framework\Http\Requests;
 
 use Illuminate\Support\Facades\Auth;
 use Sahakavatar\Cms\Http\Requests\Request;
+use Sahakavatar\Framework\Repository\VersionsRepository;
 
 class AddVersionRequest extends Request
 {
@@ -41,6 +42,13 @@ class AddVersionRequest extends Request
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
+            $fileData = md5(\File::get($this->file('file')));
+            $version = new VersionsRepository();
+            $result = $version->findBy('content',$fileData);
+            if($result){
+                $validator->errors()->add('file', 'File already exists');
+            }
+
             if ($this->input('type') == 'css') {
                 $validatorRule = \Validator::make([ 'file' => $this->file('file')], [
                     'file' => "required|file:css,min.css"

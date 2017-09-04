@@ -32,7 +32,7 @@ class IndexController extends Controller
     {
         $versionsService->makeVersion($request);
 
-        return redirect()->back()->with('message','version created successfully');
+        return redirect()->back()->with('message','File uploaded successfully');
     }
 
     public function postMakeActive(
@@ -105,5 +105,16 @@ class IndexController extends Controller
     {
         $plugins = $versionsRepository->getBy('type','js');
         return view('framework::versions.mainjs',compact(['plugins']));
+    }
+
+    public function postGenerateMainJs(
+        Request $request,
+        VersionsService $versionsService
+    )
+    {
+        $data = $request->only('assets');
+        $versionsService->generateJS($data);
+
+        return back()->with('message','JS generated successfully');
     }
 }

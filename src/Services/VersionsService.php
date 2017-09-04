@@ -18,6 +18,7 @@ class VersionsService extends GeneralService
     private $current;
     private $versionsRepository;
     private $adminsettingRepository;
+    private $mainJS = "js/main.js";
     /**
      * @var
      */
@@ -38,7 +39,8 @@ class VersionsService extends GeneralService
       $this->versionsRepository->create([
           'name' => $request->get('name'),
           'type' => $request->get('type'),
-          'path' => $request->type.'/versions/'.$fname
+          'path' => $request->type.'/versions/'.$fname,
+          'content' => md5(public_path($request->type.'/versions/'.$fname))
       ]);
    }
 
@@ -46,5 +48,26 @@ class VersionsService extends GeneralService
     {
         $this->versionsRepository->updateWhere($id,"!=",['active' => 0]);
         $this->versionsRepository->update($id,['active' => 1]);
+    }
+
+    public function generateJS($data)
+    {
+        if(count($data['assets'])){
+            $js = "";
+            foreach ($data['assets'] as $id => $val){
+                $response = $this->versionsRepository->model()->where('id',$id)->where('type','js')->first();
+                if($response){
+                    $this->versionsRepository->updateWhere($id,'=',['is_generated' => $val]);
+                    if($val && \File::exists(public_path($response->path))) {
+                        $js .= \File::get(public_path($response->path));
+                    }
+                }
+            }
+            $this->MakeMainJS($js);
+        }
+    }
+
+    public function MakeMainJS($data){
+        \File::put(public_path($this->mainJS),$data);
     }
 }

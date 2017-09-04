@@ -14,6 +14,7 @@ Route::get('/','IndexController@getIndex');
 Route::get('/assets','IndexController@getAssets');
 Route::get('/main-js','IndexController@getMainJs');
 Route::post('/','IndexController@postUpload');
+Route::post('/generate-main-js','IndexController@postGenerateMainJs');
 Route::post('/make-active','IndexController@postMakeActive');
 
 Route::group(['prefix' => 'settings'], function () {

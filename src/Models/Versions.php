@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Versions extends Model{
     protected $table = 'versions';
 
-    protected $fillable = ['name', 'type', 'path','content'];
+    protected $guarded = ['id'];
 
     protected $dates = ['created_at','updated_at'];
 }
