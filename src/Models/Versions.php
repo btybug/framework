@@ -1,5 +1,7 @@
 <?php
+
 namespace Sahakavatar\Framework\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -7,10 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  * Class Versions
  * @package Sahakavatar\Framework\Models
  */
-class Versions extends Model{
+class Versions extends Model
+{
     protected $table = 'versions';
 
     protected $guarded = ['id'];
 
-    protected $dates = ['created_at','updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
 }

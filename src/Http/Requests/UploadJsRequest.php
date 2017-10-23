@@ -1,11 +1,18 @@
 <?php
+/**
+ * Copyright (c) 2017. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
 
 namespace Sahakavatar\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 use Sahakavatar\Framework\Repository\VersionsRepository;
 
-class AddVersionRequest extends Request
+class UploadJsRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +33,9 @@ class AddVersionRequest extends Request
     {
         if ($this->isMethod('POST')) {
             return [
-                'name' => 'required|max:255|unique:versions',
-                'version' => 'required|max:255|unique:versions',
-                'type' => 'required|in:css,js,jquery'
+                'name' => 'required|max:255|alpha_num|unique:versions',
+                'version' => 'required|max:255|alpha_num',
+                'type' => 'required|in:js'
             ];
         }
         return [];
@@ -43,21 +50,22 @@ class AddVersionRequest extends Request
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            $fileData = md5(\File::get($this->file('file')));
-            $version = new VersionsRepository();
-            $result = $version->findBy('content', $fileData);
-            if ($result) {
-                $validator->errors()->add('file', 'File already exists');
-            }
-
-            if ($this->input('type') == 'css') {
-                $validatorRule = \Validator::make(['file' => $this->file('file')], [
-                    'file' => "required|file:css,min.css"
+            if( $this->get('env') == 'link'){
+                $validatorRule = \Validator::make(['link' => $this->get('link')], [
+                    'link' => "required"
                 ]);
+
                 if ($validatorRule->fails()) {
-                    $validator->errors()->add('file', 'File should be css file');
+                    $validator->errors()->add('link', 'URL is required!!!');
                 }
-            } elseif ($this->input('type') == 'js' or $this->input('type') == 'jquery') {
+            }else {
+                $fileData = md5(\File::get($this->file('file')));
+                $version = new VersionsRepository();
+                $result = $version->findBy('content', $fileData);
+                if ($result) {
+                    $validator->errors()->add('file', 'File already exists');
+                }
+
                 $validatorRule = \Validator::make(['file' => $this->file('file')], [
                     'file' => "required|file:js,min.js"
                 ]);
@@ -65,6 +73,7 @@ class AddVersionRequest extends Request
                     $validator->errors()->add('file', 'File should be javascript file');
                 }
             }
+
         });
     }
 

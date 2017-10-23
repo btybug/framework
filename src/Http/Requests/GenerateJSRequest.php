@@ -11,7 +11,7 @@ namespace Sahakavatar\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 
-class MakeActiveVersionRequest extends Request
+class GenerateJSRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +32,7 @@ class MakeActiveVersionRequest extends Request
     {
         if ($this->isMethod('POST')) {
             return [
-                'id' => 'required|exists:versions,id'
+                'name' => 'in:is_generated_front,is_generated'
             ];
         }
         return [];

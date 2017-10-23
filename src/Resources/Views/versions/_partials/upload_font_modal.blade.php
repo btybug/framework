@@ -1,14 +1,15 @@
-<div class="modal fade" id="uploadfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="uploadJs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Upload Css</h3>
+                <h3>Upload Font</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    {!! Form::open(['class' => 'form-horizontal','files' => true]) !!}
+                    {!! Form::open(["url" => "admin/framework",'class' => 'form-horizontal','files' => true]) !!}
+                    {!! Form::hidden('type','js') !!}
                     <div>
                         <label for="username">Name</label>
                         {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Enter name']) !!}
@@ -27,21 +28,22 @@
                                 </label>
                                 <label class="checkbox-inline" for="checkboxes-1">
                                     <input type="radio" name="content_type"  value="link">
-                                    Link
+                                   Link
                                 </label>
                             </div>
                         </div>
                         <div class="file_content">
-                            <label for="username">Upload file</label>
-                            {!! Form::file('file',['class' => 'form-control']) !!}
+                        <label for="username">Upload file</label>
+                        {!! Form::file('file',['class' => 'form-control']) !!}
                         </div>
                         <div class="link_content" style="display: none">
-                            <label for="username"  class="link_content">Add link</label>
-                            {!! Form::text('link',null,['class' => 'form-control']) !!}
+                        <label for="username"  class="link_content">Add link</label>
+                        {!! Form::text('link',null,['class' => 'form-control']) !!}
                         </div>
                     </div>
+
                     <div>
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Upload',['class' => 'btn btn-success']) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -52,8 +54,8 @@
 @push('javascript')
     <script>
         $(document).ready(function () {
-            $('body').on('click', '.uplCss', function () {
-                $('#uploadfile').modal();
+            $('body').on('click', '.uplJS', function () {
+                $('#uploadJs').modal();
             });
             $('input[name=content_type]').on('change',function () {
                 var type=$(this).val();

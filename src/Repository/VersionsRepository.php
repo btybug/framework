@@ -1,4 +1,5 @@
 <?php
+
 namespace Sahakavatar\Framework\Repository;
 
 use Sahakavatar\Cms\Repositories\GeneralRepository;
@@ -7,18 +8,43 @@ use Sahakavatar\Framework\Models\Versions;
 class VersionsRepository extends GeneralRepository
 {
 
+    public function updateWhere($id, $condition = "=", $data)
+    {
+        return $this->model()->where('id', $condition, $id)->update($data);
+    }
+
     public function model()
     {
         return new Versions();
     }
 
-    public function updateWhere($id,$condition = "=",$data)
+    public function wherePluck(string $attribute, string $attrVal, string $key, string $value)
     {
-        return $this->model()->where('id',$condition,$id)->update($data);
+        return $this->model->where($attribute, $attrVal)->pluck($key, $value);
     }
 
-    public function wherePluck(string $attribute,string $attrVal,string $key, string $value)
+    public function getJS()
     {
-        return $this->model->where($attribute,$attrVal)->pluck($key, $value);
+        return $this->model->where('type', 'js')->where('active', 1)->get();
+    }
+
+    public function getCss()
+    {
+        return $this->model->where('type', 'css')->get();
+    }
+
+    public function getByExcept(string $attribute, string $value, string $except, string $exceptValue)
+    {
+        return $this->model()->where($attribute, $value)->where($except, '!=', $exceptValue)->get();
+    }
+
+    public function updateWithAttribute($attr, $condition = "=", $value, $data)
+    {
+        return $this->model->where($attr, $condition, $value)->update($data);
+    }
+
+    public function getLocalData($section = "is_generated",$type = "js")
+    {
+        return $this->model->where('type', $type)->where('active', 1)->where('env', "local")->where($section,1)->get();
     }
 }

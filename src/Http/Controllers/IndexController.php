@@ -1,15 +1,17 @@
 <?php
+
 namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sahakavatar\Cms\Models\Routes;
-use Sahakavatar\Framework\Http\Requests\AddVersionRequest;
+use Sahakavatar\Framework\Http\Requests\ChangeVersionRequest;
+use Sahakavatar\Framework\Http\Requests\GenerateJSRequest;
 use Sahakavatar\Framework\Http\Requests\MakeActiveVersionRequest;
-use Sahakavatar\Framework\Repository\VersionSettingsRepository;
+use Sahakavatar\Framework\Http\Requests\UpdateJsRequest;
+use Sahakavatar\Framework\Http\Requests\UploadCssRequest;
+use Sahakavatar\Framework\Http\Requests\UploadJsRequest;
 use Sahakavatar\Framework\Repository\VersionsRepository;
 use Sahakavatar\Framework\Services\VersionsService;
-use Sahakavatar\Settings\Repository\AdminsettingRepository;
 
 /**
  * Class SystemController
@@ -17,22 +19,80 @@ use Sahakavatar\Settings\Repository\AdminsettingRepository;
  */
 class IndexController extends Controller
 {
-    public function getIndex(
-       VersionsRepository  $versionsRepository
-    )
+    public function getIndex()
     {
-        $versions = $versionsRepository->getAll();
-        return view('framework::versions.index',compact(['versions']));
+        return view('framework::versions.index', compact(['versions']));
     }
 
-    public function postUpload(
-        AddVersionRequest $request,
+    public function getJs(
+        VersionsRepository $versionsRepository
+    )
+    {
+        $plugins = $versionsRepository->getJS();
+        return view('framework::versions.assets.js', compact(['plugins']));
+    }
+
+    public function postUploadJs(
+        UploadJsRequest $request,
         VersionsService $versionsService
     )
     {
         $versionsService->makeVersion($request);
 
-        return redirect()->back()->with('message','File uploaded successfully');
+        return redirect()->back()->with('message', 'File uploaded successfully');
+    }
+
+    public function postCss(
+        UploadCssRequest $request,
+        VersionsService $versionsService
+    )
+    {
+        $versionsService->makeCss($request);
+
+        return redirect()->back()->with('message', 'File uploaded successfully');
+    }
+
+    public function postUploadVersion(
+        UpdateJsRequest $request,
+        VersionsService $versionsService
+    )
+    {
+        $versionsService->updateVersion($request);
+
+        return redirect()->back()->with('message', 'File uploaded successfully');
+    }
+
+    public function getVersions(
+        Request $request,
+        VersionsRepository $versionsRepository
+    )
+    {
+        $data = $versionsRepository->getByExcept('name', $request->get('name'), 'id', $request->get('id'));
+
+        $html = view('framework::versions._partials.versions', compact(['data']))->render();
+
+        return \Response::json(['error' => false, 'html' => $html]);
+    }
+
+    public function getActiveVersions(
+        Request $request,
+        VersionsRepository $versionsRepository
+    )
+    {
+        $data = $versionsRepository->getByExcept('type', "js", 'active', 0);
+        $section = $request->get('section');
+        $html = view('framework::versions._partials.active_versions', compact(['data', 'section']))->render();
+
+        return \Response::json(['error' => false, 'html' => $html]);
+    }
+
+    public function postChangeVersion(
+        ChangeVersionRequest $request,
+        VersionsService $versionsService
+    )
+    {
+        $versionsService->changeVersion($request->id);
+        return redirect()->back()->with('message', 'version activated');
     }
 
     public function postMakeActive(
@@ -42,79 +102,59 @@ class IndexController extends Controller
     {
         $versionsService->makeActive($request->id);
 
-        return redirect()->back()->with('message','version activated');
+        return redirect()->back()->with('message', 'version activated');
     }
 
-    public function getSettings(
-        VersionsRepository $versionsRepository,
-        AdminsettingRepository $adminsettingRepository
-    )
-    {
-        $cssData = $versionsRepository->wherePluck('type','css','name','id')->toArray();
-        $jsData = $versionsRepository->wherePluck('type','js','name','id')->toArray();
-        $jqueryData = $versionsRepository->wherePluck('type','jquery','name','id')->toArray();
-        $model = $adminsettingRepository->getVersionsSettings('versions','backend');
-
-        return view('framework::versions.settings',compact(['cssData','jsData','jqueryData','model']));
-    }
-
-    public function postSettings(
-        Request $request,
-        AdminsettingRepository $adminsettingRepository
-    )
-    {
-        $adminsettingRepository->createOrUpdateToJson($request->except('_token'),'versions','backend');
-
-        return back()->with('message','Settings are saved');
-    }
-
-    public function getFrontSettings(
-        VersionsRepository $versionsRepository,
-        AdminsettingRepository $adminsettingRepository
-    )
-    {
-        $cssData = $versionsRepository->wherePluck('type','css','name','id')->toArray();
-        $jsData = $versionsRepository->wherePluck('type','js','name','id')->toArray();
-        $jqueryData = $versionsRepository->wherePluck('type','jquery','name','id')->toArray();
-        $model = $adminsettingRepository->getVersionsSettings('versions','frontend');
-
-        return view('framework::versions.front_settings',compact(['cssData','jsData','jqueryData','model']));
-    }
-
-    public function postFrontSettings(
-        Request $request,
-        AdminsettingRepository $adminsettingRepository
-    )
-    {
-        $adminsettingRepository->createOrUpdateToJson($request->except('_token'),'versions','frontend');
-
-        return back()->with('message','Settings are saved');
-    }
-
-    public function getAssets(
+    public function getCss(
         VersionsRepository $versionsRepository
     )
     {
-        $plugins = $versionsRepository->getBy('type','js');
-        return view('framework::versions.assets',compact(['plugins']));
+        $plugins = $versionsRepository->getCss();
+        return view('framework::versions.assets.css', compact(['plugins']));
     }
 
-    public function getMainJs(
+    public function getProfiles(
         VersionsRepository $versionsRepository
     )
     {
-        $plugins = $versionsRepository->getBy('type','js');
-        return view('framework::versions.mainjs',compact(['plugins']));
+        $plugins = $versionsRepository->getBy('type', 'js');
+        return view('framework::versions.assets.profiles', compact(['plugins']));
+    }
+
+    public function getFonts(
+        VersionsRepository $versionsRepository
+    )
+    {
+        $plugins = $versionsRepository->getBy('type', 'js');
+        return view('framework::versions.assets.fonts', compact(['plugins']));
     }
 
     public function postGenerateMainJs(
-        Request $request,
+        GenerateJSRequest $request,
         VersionsService $versionsService
     )
     {
-        $data = $request->only('assets');
+        $data = $request->all();
         $versionsService->generateJS($data);
 
-        return back()->with('message','JS generated successfully');
+        return back()->with('message', 'JS generated successfully');
+    }
+
+    public function postUpdateLink(
+        MakeActiveVersionRequest $request,
+        VersionsService $versionsService
+    )
+    {
+        $data = $request->all();
+        $versionsService->updateLink($data);
+
+        return back()->with('message', 'Link updated successfully');
+    }
+
+    public function delete(
+        Request $request
+    )
+    {
+        dd($request->all());
     }
 }

@@ -11,7 +11,7 @@ namespace Sahakavatar\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 
-class MakeActiveVersionRequest extends Request
+class UpdateLinkRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,5 +36,18 @@ class MakeActiveVersionRequest extends Request
             ];
         }
         return [];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $validatorRule = \Validator::make(['link' => $this->get('link')], [
+                'link' => "required"
+            ]);
+
+            if ($validatorRule->fails()) {
+                $validator->errors()->add('link', 'URL is required!!!');
+            }
+        });
     }
 }

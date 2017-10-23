@@ -1,17 +1,10 @@
 <?php
-/**
- * Copyright (c) 2017. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
- */
 
 namespace Sahakavatar\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 
-class MakeActiveVersionRequest extends Request
+class ChangeVersionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +25,7 @@ class MakeActiveVersionRequest extends Request
     {
         if ($this->isMethod('POST')) {
             return [
-                'id' => 'required|exists:versions,id'
+                'id' => 'required|exists:versions'
             ];
         }
         return [];

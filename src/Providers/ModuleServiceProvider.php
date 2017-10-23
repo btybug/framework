@@ -33,13 +33,17 @@ class ModuleServiceProvider extends ServiceProvider
                 ]
             ],
             'framework_assets' => [
-                [
-                    'title' => 'Main Js',
-                    'url' => '/admin/framework/main-js',
+               [
+                    'title' => 'Js',
+                    'url' => '/admin/framework/js',
                 ],
                 [
-                    'title' => 'Assets',
-                    'url' => '/admin/framework/assets',
+                    'title' => 'Css',
+                    'url' => '/admin/framework/css',
+                ],
+                [
+                    'title' => 'Fonts',
+                    'url' => '/admin/framework/fonts',
                 ]
             ]
         ];
@@ -47,7 +51,7 @@ class ModuleServiceProvider extends ServiceProvider
         \Eventy::action('my.tab', $tabs);
 
         //TODO; remove when finish all
-        \Sahakavatar\Cms\Models\Routes::registerPages('sahak.avatar/framework');
+//        \Sahakavatar\Cms\Models\Routes::registerPages('sahak.avatar/framework');
     }
 
     /**
