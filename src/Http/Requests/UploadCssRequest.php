@@ -49,18 +49,28 @@ class UploadCssRequest extends Request
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            $fileData = md5(\File::get($this->file('file')));
-            $version = new VersionsRepository();
-            $result = $version->findBy('content', $fileData);
-            if ($result) {
-                $validator->errors()->add('file', 'File already exists');
-            }
+            if( $this->get('env') == 'link'){
+                $validatorRule = \Validator::make(['link' => $this->get('link')], [
+                    'link' => "required"
+                ]);
 
-            $validatorRule = \Validator::make(['file' => $this->file('file')], [
-                'file' => "required|file:css,min.css"
-            ]);
-            if ($validatorRule->fails()) {
-                $validator->errors()->add('file', 'File should be css file');
+                if ($validatorRule->fails()) {
+                    $validator->errors()->add('link', 'URL is required!!!');
+                }
+            }else {
+                $fileData = md5(\File::get($this->file('file')));
+                $version = new VersionsRepository();
+                $result = $version->findBy('content', $fileData);
+                if ($result) {
+                    $validator->errors()->add('file', 'File already exists');
+                }
+
+                $validatorRule = \Validator::make(['file' => $this->file('file')], [
+                    'file' => "required|file:css,min.css"
+                ]);
+                if ($validatorRule->fails()) {
+                    $validator->errors()->add('file', 'File should be css file');
+                }
             }
         });
     }

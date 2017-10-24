@@ -128,20 +128,33 @@ class VersionsService extends GeneralService
 
     public function makeCss($request)
     {
-        $this->exstension = $request->file('file')->getClientOriginalExtension(); // getting image extension
-        $oname = $request->file('file')->getClientOriginalName(); // getting image extension
-        $fname = uniqid() . '.' . $this->exstension;
-        $request->file('file')->move(public_path('css/versions'), $fname);
+        if($request->get("env") == "link"){
+            $this->versionsRepository->create([
+                'name' => $request->get('name'),
+                'type' => $request->get('type'),
+                'version' => $request->get('version'),
+                'file_name' => $request->get('link'),
+                'author_id' => \Auth::id(),
+                'env' => 1,
+                'active' => 1
+            ]);
+        }else{
+            $this->exstension = $request->file('file')->getClientOriginalExtension(); // getting image extension
+            $oname = $request->file('file')->getClientOriginalName(); // getting image extension
+            $fname = uniqid() . '.' . $this->exstension;
+            $request->file('file')->move(public_path('css/versions'), $fname);
 
-        $this->versionsRepository->create([
-            'name' => $request->get('name'),
-            'type' => "css",
-            'version' => $request->get('version'),
-            'file_name' => $fname,
-            'author_id' => \Auth::id(),
-            'active' => 0,
-            'content' => md5(public_path('css/versions'))
-        ]);
+            $this->versionsRepository->create([
+                'name' => $request->get('name'),
+                'type' => "css",
+                'version' => $request->get('version'),
+                'file_name' => $fname,
+                'author_id' => \Auth::id(),
+                'active' => 0,
+                'env' => 0,
+                'content' => md5(public_path('css/versions'))
+            ]);
+        }
     }
 
     public function updateLink($request)
@@ -149,6 +162,27 @@ class VersionsService extends GeneralService
         $response = $this->versionsRepository->find($request['id']);
         if($response){
             $response->update(['file_name' => $request['link']]);
+        }
+    }
+
+    public function delete($item)
+    {
+        if($item->env == 'local'){
+            $data = $this->versionsRepository->getBy('name',$item->name);
+            if(count($data)){
+                foreach ($data as $val){
+                    if (\File::exists(public_path("js/versions/" . $val->name . "/" . $val->version . "/" . $val->file_name))) {
+                        unlink(public_path("js/versions/" . $val->name . "/" . $val->version . "/" . $val->file_name));
+                    }
+                    $this->versionsRepository->delete($val->id);
+                }
+                if($item->type == "js"){
+                    $this->synchronize();
+                    $this->synchronize("is_generated_front");
+                }
+            }
+        }else{
+            return $this->versionsRepository->delete($item->id);
         }
     }
 }

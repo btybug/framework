@@ -10,6 +10,7 @@
 namespace Sahakavatar\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Sahakavatar\Framework\Http\Requests\SettingsSaveRequest;
 use Sahakavatar\Framework\Repository\VersionsRepository;
 use Sahakavatar\Framework\Services\SettingsService;
@@ -26,22 +27,21 @@ class SettingsController extends Controller
         AdminsettingRepository $adminsettingRepository
     )
     {
-        $type = "back";
         $cssData = $versionsRepository->wherePluck('type', 'css', 'name', 'id')->toArray();
+        $jsData = $versionsRepository->getJSLiveLinks(true)->toArray();
         $model = $adminsettingRepository->getVersionsSettings('versions', 'backend');
-
-        return view('framework::versions.settings', compact(['cssData', 'model', 'type']));
+//        dd(5);
+        return view('framework::versions.settings', compact(['cssData', 'model', 'jsData']));
     }
 
     public function postIndex(
-        SettingsSaveRequest $request,
+        Request $request,
         AdminsettingRepository $adminsettingRepository,
         SettingsService $service
     )
     {
         $data = $request->except('_token');
-        $data['jquery_version'] = $service->makeJquery($request, 'Back');
-        $adminsettingRepository->createOrUpdateToJson($data, 'versions', 'frontend');
+        $adminsettingRepository->createOrUpdateToJson($data, 'versions', 'backend');
 
         return back()->with('message', 'Settings are saved');
     }
@@ -51,20 +51,19 @@ class SettingsController extends Controller
         AdminsettingRepository $adminsettingRepository
     )
     {
-        $type = "front";
         $cssData = $versionsRepository->wherePluck('type', 'css', 'name', 'id')->toArray();
+        $jsData = $versionsRepository->getJSLiveLinks(true)->toArray();
         $model = $adminsettingRepository->getVersionsSettings('versions', 'frontend');
-        return view('framework::versions.settings', compact(['cssData', 'model', 'type']));
+        return view('framework::versions.front_settings', compact(['cssData', 'model', 'jsData']));
     }
 
     public function postFrontSettings(
-        SettingsSaveRequest $request,
+        Request $request,
         AdminsettingRepository $adminsettingRepository,
         SettingsService $service
     )
     {
         $data = $request->except('_token');
-        $data['jquery_version'] = $service->makeJquery($request, 'Front');
         $adminsettingRepository->createOrUpdateToJson($data, 'versions', 'frontend');
 
         return back()->with('message', 'Settings are saved');

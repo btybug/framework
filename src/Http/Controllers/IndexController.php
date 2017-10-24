@@ -152,9 +152,13 @@ class IndexController extends Controller
     }
 
     public function delete(
-        Request $request
+        Request $request,
+        VersionsRepository $versionsRepository,
+        VersionsService $versionsService
     )
     {
-        dd($request->all());
+        $data = $versionsRepository->findOrFail($request->get('slug'));
+        $response = $versionsService->delete($data);
+        return \Response::json(['success' => true, 'url' => url('/admin/framework/js')]);
     }
 }

@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="radios">Active JS</label>
                         <div class="col-md-8">
-                          back.js
+                            front.js
                         </div>
                     </div>
                     <div class="form-group">

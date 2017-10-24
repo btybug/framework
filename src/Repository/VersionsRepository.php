@@ -47,4 +47,15 @@ class VersionsRepository extends GeneralRepository
     {
         return $this->model->where('type', $type)->where('active', 1)->where('env', "local")->where($section,1)->get();
     }
+
+    public function getJSLiveLinks($pluck = false)
+    {
+        $query = $this->model->where('type', "js")->where('env', 1);
+
+        if($pluck){
+            return $query->pluck("name","id");
+        }
+
+        return $query->get();
+    }
 }

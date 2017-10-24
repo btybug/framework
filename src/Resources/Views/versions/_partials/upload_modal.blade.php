@@ -9,6 +9,7 @@
             <div class="modal-body">
                 <div class="row">
                     {!! Form::open(['class' => 'form-horizontal','files' => true]) !!}
+                    {!! Form::hidden('type','css') !!}
                     <div>
                         <label for="username">Name</label>
                         {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Enter name']) !!}
@@ -22,11 +23,11 @@
                             <label class="col-md-4 control-label" for="checkboxes">Select Content Type</label>
                             <div class="col-md-4">
                                 <label class="checkbox-inline" for="checkboxes-0">
-                                    <input type="radio" name="content_type"  checked value="file">
+                                    <input type="radio" name="env"  checked value="file">
                                     File
                                 </label>
                                 <label class="checkbox-inline" for="checkboxes-1">
-                                    <input type="radio" name="content_type"  value="link">
+                                    <input type="radio" name="env"  value="link">
                                     Link
                                 </label>
                             </div>
@@ -55,7 +56,7 @@
             $('body').on('click', '.uplCss', function () {
                 $('#uploadfile').modal();
             });
-            $('input[name=content_type]').on('change',function () {
+            $('input[name=env]').on('change',function () {
                 var type=$(this).val();
                 switch (type){
                     case 'file':

@@ -28,12 +28,16 @@
                             <td>{!! $item->name !!}</td>
                             <td>{!! BBGetUserName($item->author_id) !!}</td>
                             <td>{!! $item->version !!}</td>
-                            <td>local</td>
+                            <td>{!! ($item->env) ? "Live" : "Local" !!}</td>
                             <td>
-                                <a href="javascript:void(0)" data-id="{!! $item->id !!}" class="btn btn-info update-js">
-                                    Update </a>
-                                <a href="javascript:void(0)" data-name="{!! $item->name !!}" data-id="{!! $item->id !!}"
-                                   class="btn btn-primary change-version"> Change Version </a>
+                                @if($item->env)
+                                    <a href="javascript:void(0)" data-link="{!! $item->file_name !!}" data-id="{!! $item->id !!}" class="btn btn-info update-live">Update</a>
+                                @endif
+
+                                <a data-href="{!! url('admin/framework/delete') !!}"
+                                   data-key="{!! $item->id !!}" data-type="{{ $item->type.' '.$item->name }}"
+                                   class="delete-button btn btn-danger"><i
+                                            class="fa fa-trash-o f-s-14 "></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -49,6 +53,8 @@
 
     @include('cms::_partials.delete_modal')
     @include('framework::versions._partials.upload_modal')
+
+    @include('framework::versions._partials.update_live_modal')
 @stop
 
 @section('CSS')
