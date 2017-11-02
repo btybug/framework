@@ -1,9 +1,9 @@
 <?php
 
-namespace Sahakavatar\Framework\Repository;
+namespace Btybug\Framework\Repository;
 
 use Sahakavatar\Cms\Repositories\GeneralRepository;
-use Sahakavatar\Framework\Models\Versions;
+use Btybug\Framework\Models\Versions;
 
 class VersionsRepository extends GeneralRepository
 {
@@ -26,6 +26,11 @@ class VersionsRepository extends GeneralRepository
     public function getJS()
     {
         return $this->model->where('type', 'js')->where('active', 1)->get();
+    }
+
+    public function getJQuery()
+    {
+        return $this->model->where('type', 'jquery')->where('active', 1)->get();
     }
 
     public function getCss()

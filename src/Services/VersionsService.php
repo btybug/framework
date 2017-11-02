@@ -1,14 +1,14 @@
 <?php
 
-namespace Sahakavatar\Framework\Services;
+namespace Btybug\Framework\Services;
 
 use Sahakavatar\Cms\Services\GeneralService;
-use Sahakavatar\Framework\Repository\VersionsRepository;
-use Sahakavatar\Settings\Repository\AdminsettingRepository;
+use Btybug\Framework\Repository\VersionsRepository;
+use Btybug\Settings\Repository\AdminsettingRepository;
 
 /**
  * Class ThemeService
- * @package Sahakavatar\Console\Services
+ * @package Btybug\Console\Services
  */
 class VersionsService extends GeneralService
 {
@@ -80,6 +80,52 @@ class VersionsService extends GeneralService
         ]);
     }
 
+    public function updateJQueryVersion($request)
+    {
+        if(gettype($request->get('parent_id')) == 'string'){
+            $this->exstension = $request->file('file')->getClientOriginalExtension(); // getting image extension
+            $oname = $request->file('file')->getClientOriginalName(); // getting image extension
+            $fname = uniqid() . '.' . $this->exstension;
+            $request->file('file')->move(public_path($request->type . '/versions/' . $request->get('parent_id') . '/' . $request->get('version')), $fname);
+
+            if($request->get('parent_id') == 'backend_jquery'){
+                $data['is_generated'] = 1;
+            }else{
+                $data['is_generated_front'] = 1;
+            }
+
+            $this->versionsRepository->create([
+                'name' => $request->get('parent_id'),
+                'type' => $request->get('type'),
+                'version' => $request->get('version'),
+                'file_name' => $fname,
+                'author_id' => \Auth::id(),
+                'active' => 1,
+                'env' => 0,
+                'content' => md5(public_path($request->type . '/versions/' . $request->get('parent_id') . '/' . $request->get('version')))
+            ] + $data );
+
+            $this->synchronize();
+            $this->synchronize("is_generated_front");
+
+        }else{
+            $version = $this->versionsRepository->find($request->get('parent_id'));
+            $this->exstension = $request->file('file')->getClientOriginalExtension(); // getting image extension
+            $oname = $request->file('file')->getClientOriginalName(); // getting image extension
+            $fname = uniqid() . '.' . $this->exstension;
+            $request->file('file')->move(public_path($version->type . '/versions/' . $version->name . '/' . $request->get('version')), $fname);
+
+            $this->versionsRepository->create([
+                'name' => $version->name,
+                'type' => $version->type,
+                'version' => $request->get('version'),
+                'file_name' => $fname,
+                'author_id' => \Auth::id(),
+                'content' => md5(public_path($request->type . '/versions/' . $version->name . '/' . $request->get('version')))
+            ]);
+        }
+    }
+
     public function makeActive($id)
     {
         $this->versionsRepository->updateWhere($id, "!=", ['active' => 0]);
@@ -92,7 +138,7 @@ class VersionsService extends GeneralService
         $this->versionsRepository->updateWithAttribute('name', '=', $version->name, ['active' => 0]);
         $this->versionsRepository->update($id, ['active' => 1]);
 
-        if($version->type == "js"){
+        if($version->type == "js" && $version->type == "jquery"){
             $this->synchronize();
             $this->synchronize("is_generated_front");
         }
@@ -109,6 +155,7 @@ class VersionsService extends GeneralService
 
     private function synchronize($section = "is_generated"){
         $generatingData =  $this->versionsRepository->getLocalData($section);
+        dd($generatingData);
         $js = "";
         if(count($generatingData)){
             foreach ($generatingData as $key => $val) {
@@ -184,5 +231,22 @@ class VersionsService extends GeneralService
         }else{
             return $this->versionsRepository->delete($item->id);
         }
+    }
+
+    public function getJqueryVersions()
+    {
+        $data = [];
+        $result = $this->versionsRepository->getJQuery();
+        if(count($result)){
+            foreach ($result as $item){
+                if($item->is_generated){
+                    $data["backend_jquery"] = $item;
+                }elseif($item->is_generated_front){
+                    $data["frontend_jquery"] = $item;
+                }
+            }
+        }
+
+        return $data;
     }
 }

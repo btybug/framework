@@ -1,9 +1,9 @@
 <?php
 
-namespace Sahakavatar\Framework\Providers;
+namespace Btybug\Framework\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Sahakavatar\Framework\Models\Optimzation;
+use Btybug\Framework\Models\Optimzation;
 
 class ModuleServiceProvider extends ServiceProvider
 {

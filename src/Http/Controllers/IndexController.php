@@ -1,17 +1,17 @@
 <?php
 
-namespace Sahakavatar\Framework\Http\Controllers;
+namespace Btybug\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sahakavatar\Framework\Http\Requests\ChangeVersionRequest;
-use Sahakavatar\Framework\Http\Requests\GenerateJSRequest;
-use Sahakavatar\Framework\Http\Requests\MakeActiveVersionRequest;
-use Sahakavatar\Framework\Http\Requests\UpdateJsRequest;
-use Sahakavatar\Framework\Http\Requests\UploadCssRequest;
-use Sahakavatar\Framework\Http\Requests\UploadJsRequest;
-use Sahakavatar\Framework\Repository\VersionsRepository;
-use Sahakavatar\Framework\Services\VersionsService;
+use Btybug\Framework\Http\Requests\ChangeVersionRequest;
+use Btybug\Framework\Http\Requests\GenerateJSRequest;
+use Btybug\Framework\Http\Requests\MakeActiveVersionRequest;
+use Btybug\Framework\Http\Requests\UpdateJsRequest;
+use Btybug\Framework\Http\Requests\UploadCssRequest;
+use Btybug\Framework\Http\Requests\UploadJsRequest;
+use Btybug\Framework\Repository\VersionsRepository;
+use Btybug\Framework\Services\VersionsService;
 
 /**
  * Class SystemController
@@ -25,11 +25,14 @@ class IndexController extends Controller
     }
 
     public function getJs(
-        VersionsRepository $versionsRepository
+        VersionsRepository $versionsRepository,
+        VersionsService $versionsService
     )
     {
         $plugins = $versionsRepository->getJS();
-        return view('framework::versions.assets.js', compact(['plugins']));
+        $jquery = $versionsService->getJqueryVersions();
+
+        return view('framework::versions.assets.js', compact(['plugins','jquery']));
     }
 
     public function postUploadJs(
@@ -57,8 +60,11 @@ class IndexController extends Controller
         VersionsService $versionsService
     )
     {
-        $versionsService->updateVersion($request);
-
+        if($request->get('type') == 'jquery'){
+            $versionsService->updateJQueryVersion($request);
+        }else{
+            $versionsService->updateVersion($request);
+        }
         return redirect()->back()->with('message', 'File uploaded successfully');
     }
 
@@ -67,7 +73,11 @@ class IndexController extends Controller
         VersionsRepository $versionsRepository
     )
     {
-        $data = $versionsRepository->getByExcept('name', $request->get('name'), 'id', $request->get('id'));
+        if(gettype($request->get("id")) == "string"){
+            $data = $versionsRepository->getBy('name', $request->get('name'));
+        }else{
+            $data = $versionsRepository->getByExcept('name', $request->get('name'), 'id', $request->get('id'));
+        }
 
         $html = view('framework::versions._partials.versions', compact(['data']))->render();
 

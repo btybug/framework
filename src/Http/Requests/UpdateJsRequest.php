@@ -7,10 +7,10 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-namespace Sahakavatar\Framework\Http\Requests;
+namespace Btybug\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
-use Sahakavatar\Framework\Repository\VersionsRepository;
+use Btybug\Framework\Repository\VersionsRepository;
 
 class UpdateJsRequest extends Request
 {
@@ -33,7 +33,6 @@ class UpdateJsRequest extends Request
     {
         if ($this->isMethod('POST')) {
             return [
-                'parent_id' => 'required|exists:versions,id',
                 'version' => 'required|max:255|alpha_num'
             ];
         }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Sahakavatar\Framework\Models;
+namespace Btybug\Framework\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 
 /**
  * Class Versions
- * @package Sahakavatar\Framework\Models
+ * @package Btybug\Framework\Models
  */
 class Versions extends Model
 {

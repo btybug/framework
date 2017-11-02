@@ -7,15 +7,15 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-namespace Sahakavatar\Framework\Services;
+namespace Btybug\Framework\Services;
 
 use Sahakavatar\Cms\Services\GeneralService;
-use Sahakavatar\Framework\Repository\VersionsRepository;
-use Sahakavatar\Settings\Repository\AdminsettingRepository;
+use Btybug\Framework\Repository\VersionsRepository;
+use Btybug\Settings\Repository\AdminsettingRepository;
 
 /**
  * Class ThemeService
- * @package Sahakavatar\Console\Services
+ * @package Btybug\Console\Services
  */
 class SettingsService extends GeneralService
 {

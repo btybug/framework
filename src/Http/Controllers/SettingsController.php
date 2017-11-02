@@ -7,14 +7,14 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-namespace Sahakavatar\Framework\Http\Controllers;
+namespace Btybug\Framework\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sahakavatar\Framework\Http\Requests\SettingsSaveRequest;
-use Sahakavatar\Framework\Repository\VersionsRepository;
-use Sahakavatar\Framework\Services\SettingsService;
-use Sahakavatar\Settings\Repository\AdminsettingRepository;
+use Btybug\Framework\Http\Requests\SettingsSaveRequest;
+use Btybug\Framework\Repository\VersionsRepository;
+use Btybug\Framework\Services\SettingsService;
+use Btybug\Settings\Repository\AdminsettingRepository;
 
 /**
  * Class SystemController

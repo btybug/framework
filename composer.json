@@ -1,5 +1,5 @@
 {
-  "name": "sahak.avatar/framework",
+  "name": "btybug/framework",
   "authors": [
     {
       "name": "Eduard",
@@ -11,7 +11,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "Sahakavatar\\Framework\\": "src/"
+      "Btybug\\Framework\\": "src/"
     }
   }
 }

@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'framework_assets'])
+@extends('btybug::layouts.mTabs',['index'=>'framework_assets'])
 @section('tab')
     <div class="col-md-12">
         <div class="col-md-12">
@@ -17,24 +17,32 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>3.2.1</td>
-                    <td>backend </td>
+                    <td>{!! (isset($jquery['backend_jquery'])) ? $jquery['backend_jquery']['version'] : "Inactive" !!}</td>
+                    <td>backend</td>
                     <td>local</td>
                     <td>
-                        <a href="javascript:void(0)" data-id="" class="btn btn-info update-js">
+                        <a href="javascript:void(0)"
+                           data-id="{!! (isset($jquery['backend_jquery'])) ? $jquery['backend_jquery']['id'] : "backend_jquery" !!}"
+                           data-jquery="true" class="btn btn-info update-js">
                             +add new </a>
-                        <a href="javascript:void(0)" data-name="" data-id=""
+                        <a href="javascript:void(0)"
+                           data-name="backend_jquery"
+                           data-id="{!! (isset($jquery['backend_jquery'])) ? $jquery['backend_jquery']['id'] : "backend_jquery" !!}"
                            class="btn btn-primary change-version"> Change Version </a>
                     </td>
                 </tr>
                 <tr>
-                    <td>3.0.1</td>
+                    <td>{!! (isset($jquery['frontend_jquery'])) ? $jquery['frontend_jquery']['version'] : "Inactive" !!}</td>
                     <td>frontend</td>
                     <td>local</td>
                     <td>
-                        <a href="javascript:void(0)" data-id="" class="btn btn-info update-js">
+                        <a href="javascript:void(0)"
+                           data-id="{!! (isset($jquery['frontend_jquery'])) ? $jquery['frontend_jquery']['id'] : "frontend_jquery" !!}"
+                           data-jquery="true" class="btn btn-info update-js">
                             +add new </a>
-                        <a href="javascript:void(0)" data-name="" data-id=""
+                        <a href="javascript:void(0)"
+                           data-name="frontend_jquery"
+                           data-id="{!! (isset($jquery['frontend_jquery'])) ? $jquery['frontend_jquery']['id'] : "frontend_jquery" !!}"
                            class="btn btn-primary change-version"> Change Version </a>
                     </td>
                 </tr>

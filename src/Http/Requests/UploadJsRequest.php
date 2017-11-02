@@ -7,10 +7,10 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-namespace Sahakavatar\Framework\Http\Requests;
+namespace Btybug\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
-use Sahakavatar\Framework\Repository\VersionsRepository;
+use Btybug\Framework\Repository\VersionsRepository;
 
 class UploadJsRequest extends Request
 {

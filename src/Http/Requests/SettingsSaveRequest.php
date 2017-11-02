@@ -7,7 +7,7 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-namespace Sahakavatar\Framework\Http\Requests;
+namespace Btybug\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 

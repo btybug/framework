@@ -1,9 +1,9 @@
 <?php
 
-namespace Sahakavatar\Framework\Http\Requests;
+namespace Btybug\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
-use Sahakavatar\Framework\Repository\VersionsRepository;
+use Btybug\Framework\Repository\VersionsRepository;
 
 class AddVersionRequest extends Request
 {

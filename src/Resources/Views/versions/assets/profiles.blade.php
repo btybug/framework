@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'framework_assets'])
+@extends('btybug::layouts.mTabs',['index'=>'framework_assets'])
 @section('tab')
     <div class="container">
         <h2>Profiles</h2>

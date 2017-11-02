@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Framework\Http\Requests;
+namespace Btybug\Framework\Http\Requests;
 
 use Sahakavatar\Cms\Http\Requests\Request;
 

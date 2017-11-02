@@ -9,7 +9,7 @@ function FWgetClasses()
 
 function FWget($data)
 {
-    $version = \Sahakavatar\Framework\Models\Framework::active()->first();
+    $version = \Btybug\Framework\Models\Framework::active()->first();
     $masterCollections = count($version) ? $version->getMasterCollectionsByType($data['tag']) : [];
     $collections = ($version) ? $version->getCollectionsByType($data['tag']) : [];
     $name = (isset($data['name']) ? $data["name"] : null);
@@ -21,12 +21,12 @@ function FWget($data)
 
 function BBCss($section = 'frontend')
 {
-    $adminsettingRepository = new  \Sahakavatar\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
         if (isset($model['css_version']) && count($model['css_version'])) {
             foreach ($model['css_version'] as $id){
-                $versionRepo = new \Sahakavatar\Framework\Repository\VersionsRepository();
+                $versionRepo = new \Btybug\Framework\Repository\VersionsRepository();
                 $version = $versionRepo->find($id);
                 $path = ($version->env =='local') ? "/css/versions/" . $version->file_name : $version->file_name;
                 return Html::style($path);
@@ -39,12 +39,12 @@ function BBCss($section = 'frontend')
 
 function BBJs($section = 'frontend')
 {
-    $adminsettingRepository = new  \Sahakavatar\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
         if (isset($model['js_data']) && count($model['js_data'])) {
             foreach ($model['js_data'] as $id){
-                $versionRepo = new \Sahakavatar\Framework\Repository\VersionsRepository();
+                $versionRepo = new \Btybug\Framework\Repository\VersionsRepository();
                 $version = $versionRepo->find($id);
                 return Html::style($version->file_name);
             }
@@ -54,7 +54,7 @@ function BBJs($section = 'frontend')
 
 function BBJquery($section = 'frontend')
 {
-    $adminsettingRepository = new  \Sahakavatar\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
 //        if ($model['jquery_option']) {
@@ -71,7 +71,7 @@ function BBJquery($section = 'frontend')
 function BBMainJS()
 {
     if (\File::exists(public_path('js/back.js'))) {
-        return Html::script('/js/back.js');
+        return Html::script('/js/back.js?v=999');
     }
     return '<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>';
 }
