@@ -51,7 +51,7 @@ class ModuleServiceProvider extends ServiceProvider
         \Eventy::action('my.tab', $tabs);
 
         //TODO; remove when finish all
-//        \Sahakavatar\Cms\Models\Routes::registerPages('sahak.avatar/framework');
+//        \Btybug\Cms\Models\Routes::registerPages('sahak.avatar/framework');
     }
 
     /**

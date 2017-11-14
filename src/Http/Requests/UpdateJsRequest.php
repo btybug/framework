@@ -9,7 +9,7 @@
 
 namespace Btybug\Framework\Http\Requests;
 
-use Sahakavatar\Cms\Http\Requests\Request;
+use Btybug\Cms\Http\Requests\Request;
 use Btybug\Framework\Repository\VersionsRepository;
 
 class UpdateJsRequest extends Request

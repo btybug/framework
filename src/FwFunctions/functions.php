@@ -28,7 +28,7 @@ function BBCss($section = 'frontend')
             foreach ($model['css_version'] as $id){
                 $versionRepo = new \Btybug\Framework\Repository\VersionsRepository();
                 $version = $versionRepo->find($id);
-                $path = ($version->env =='local') ? "/css/versions/" . $version->file_name : $version->file_name;
+                $path = ($version->env =='local') ? "public/css/versions/" . $version->file_name : $version->file_name;
                 return Html::style($path);
             }
         }
@@ -71,7 +71,7 @@ function BBJquery($section = 'frontend')
 function BBMainJS()
 {
     if (\File::exists(public_path('js/back.js'))) {
-        return Html::script('/js/back.js?v=999');
+        return Html::script('public/js/back.js?v=999');
     }
     return '<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>';
 }
@@ -79,7 +79,7 @@ function BBMainJS()
 function BBMainFrontJS()
 {
     if (\File::exists(public_path('js/front.js'))) {
-        return Html::script('/js/front.js');
+        return Html::script('public/js/front.js');
     }
     return '<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>';
 }

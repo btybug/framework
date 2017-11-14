@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'framework_assets'])
+@extends('cms::layouts.mTabs',['index'=>'framework_assets'])
 @section('tab')
     <div class="container">
         <h2>Profiles</h2>
@@ -52,7 +52,7 @@
     </div>
 
     @include('cms::_partials.delete_modal')
-    @include('framework::versions._partials.upload_js_modal')
+    @include('uploads::assets._partials.upload_js_modal')
 @stop
 
 @section('CSS')
@@ -65,7 +65,7 @@
                 var section = $(this).data('section');
                 $.ajax({
                     type: "post",
-                    url: "{!! url('/admin/framework/get-active-versions') !!}",
+                    url: "{!! url('/admin/uploads/assets/get-active-versions') !!}",
                     cache: false,
                     datatype: "json",
                     data: {

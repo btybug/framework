@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'framework_settings'])
+@extends('cms::layouts.mTabs',['index'=>'framework_settings'])
 @section('tab')
     <div class="col-md-12">
         {!! Form::model($model,['class' => 'form-horizontal','files' => true]) !!}
@@ -70,10 +70,10 @@
     </div>
 @stop
 @section('CSS')
-    {!! HTML::style("css/select2/select2.min.css") !!}
+    {!! HTML::style("public/css/select2/select2.min.css") !!}
 @stop
 @section('JS')
-    {!! HTML::script("js/select2/select2.full.min.js") !!}
+    {!! HTML::script("public/js/select2/select2.full.min.js") !!}
     <script>
        $(document).ready(function () {
            $('.select-dropdowns').select2({

@@ -2,7 +2,7 @@
 
 namespace Btybug\Framework\Repository;
 
-use Sahakavatar\Cms\Repositories\GeneralRepository;
+use Btybug\Cms\Repositories\GeneralRepository;
 use Btybug\Framework\Models\Versions;
 
 class VersionsRepository extends GeneralRepository

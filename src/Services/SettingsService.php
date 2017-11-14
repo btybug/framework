@@ -9,7 +9,7 @@
 
 namespace Btybug\Framework\Services;
 
-use Sahakavatar\Cms\Services\GeneralService;
+use Btybug\Cms\Services\GeneralService;
 use Btybug\Framework\Repository\VersionsRepository;
 use Btybug\Settings\Repository\AdminsettingRepository;
 

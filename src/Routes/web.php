@@ -34,3 +34,7 @@ Route::group(['prefix' => 'settings'], function () {
     Route::post('/frontend', 'SettingsController@postFrontSettings');
 });
 
+Route::group(['prefix' => 'css'], function () {
+    Route::get('/', 'CssController@getIndex');
+});
+

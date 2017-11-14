@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'framework_assets'])
+@extends('cms::layouts.mTabs',['index'=>'framework_assets'])
 @section('tab')
     <div class="col-md-12">
         <div class="col-md-12">

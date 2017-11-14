@@ -22,10 +22,7 @@ use Btybug\Settings\Repository\AdminsettingRepository;
  */
 class SettingsController extends Controller
 {
-    public function getIndex(
-        VersionsRepository $versionsRepository,
-        AdminsettingRepository $adminsettingRepository
-    )
+    public function getIndex(VersionsRepository $versionsRepository, AdminsettingRepository $adminsettingRepository)
     {
         $cssData = $versionsRepository->wherePluck('type', 'css', 'name', 'id')->toArray();
         $jsData = $versionsRepository->getJSLiveLinks(true)->toArray();
@@ -34,11 +31,7 @@ class SettingsController extends Controller
         return view('framework::versions.settings', compact(['cssData', 'model', 'jsData']));
     }
 
-    public function postIndex(
-        Request $request,
-        AdminsettingRepository $adminsettingRepository,
-        SettingsService $service
-    )
+    public function postIndex(Request $request, AdminsettingRepository $adminsettingRepository, SettingsService $service)
     {
         $data = $request->except('_token');
         $adminsettingRepository->createOrUpdateToJson($data, 'versions', 'backend');
@@ -46,10 +39,7 @@ class SettingsController extends Controller
         return back()->with('message', 'Settings are saved');
     }
 
-    public function getFrontSettings(
-        VersionsRepository $versionsRepository,
-        AdminsettingRepository $adminsettingRepository
-    )
+    public function getFrontSettings(VersionsRepository $versionsRepository, AdminsettingRepository $adminsettingRepository)
     {
         $cssData = $versionsRepository->wherePluck('type', 'css', 'name', 'id')->toArray();
         $jsData = $versionsRepository->getJSLiveLinks(true)->toArray();
@@ -57,11 +47,7 @@ class SettingsController extends Controller
         return view('framework::versions.front_settings', compact(['cssData', 'model', 'jsData']));
     }
 
-    public function postFrontSettings(
-        Request $request,
-        AdminsettingRepository $adminsettingRepository,
-        SettingsService $service
-    )
+    public function postFrontSettings(Request $request, AdminsettingRepository $adminsettingRepository, SettingsService $service)
     {
         $data = $request->except('_token');
         $adminsettingRepository->createOrUpdateToJson($data, 'versions', 'frontend');
