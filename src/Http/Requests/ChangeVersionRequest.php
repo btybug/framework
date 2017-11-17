@@ -2,7 +2,7 @@
 
 namespace Btybug\Framework\Http\Requests;
 
-use Btybug\Cms\Http\Requests\Request;
+use Btybug\btybug\Http\Requests\Request;
 
 class ChangeVersionRequest extends Request
 {

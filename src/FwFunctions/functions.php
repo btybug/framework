@@ -21,7 +21,7 @@ function FWget($data)
 
 function BBCss($section = 'frontend')
 {
-    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\btybug\Repositories\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
         if (isset($model['css_version']) && count($model['css_version'])) {
@@ -39,7 +39,7 @@ function BBCss($section = 'frontend')
 
 function BBJs($section = 'frontend')
 {
-    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\btybug\Repositories\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
         if (isset($model['js_data']) && count($model['js_data'])) {
@@ -54,7 +54,7 @@ function BBJs($section = 'frontend')
 
 function BBJquery($section = 'frontend')
 {
-    $adminsettingRepository = new  \Btybug\Settings\Repository\AdminsettingRepository();
+    $adminsettingRepository = new  \Btybug\btybug\Repositories\AdminsettingRepository();
     $model = $adminsettingRepository->getVersionsSettings('versions', $section);
     if (count($model)) {
 //        if ($model['jquery_option']) {

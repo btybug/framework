@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'framework_settings'])
+@extends('btybug::layouts.mTabs',['index'=>'framework_settings'])
 @section('tab')
     <div class="col-md-12">
         {!! Form::model($model,['class' => 'form-horizontal','files' => true]) !!}

@@ -174,5 +174,25 @@
                 <span class="module_icon"></span> HR
             </a><a data-type="images" class="add-class-modal pull-right gettype"></a>
         </li>
+        <li class="@if($slug=="images") active_class @endif">
+            <a href="?type=vertical_menu" profile-id="11" main-type="text_size"
+               rel="tab" class="tpl-left-items">
+                <span class="module_icon"></span> Vertical Menu
+            </a><a data-type="images" class="add-class-modal pull-right gettype"></a>
+        </li>
+
+        <li class="@if($slug=="images") active_class @endif">
+            <a href="?type=creative_menu" profile-id="11" main-type="text_size"
+               rel="tab" class="tpl-left-items">
+                <span class="module_icon"></span> Creative Menu
+            </a><a data-type="images" class="add-class-modal pull-right gettype"></a>
+        </li>
+
+        <li class="@if($slug=="images") active_class @endif">
+            <a href="?type=horizontal_menu" profile-id="11" main-type="text_size"
+               rel="tab" class="tpl-left-items">
+                <span class="module_icon"></span> Horizontal Menu
+            </a><a data-type="images" class="add-class-modal pull-right gettype"></a>
+        </li>
     </ul>
 </div>

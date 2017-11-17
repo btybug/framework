@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Btybug\Framework\Repository\VersionsRepository;
 use Btybug\Framework\Services\SettingsService;
-use Btybug\Settings\Repository\AdminsettingRepository;
+use Btybug\btybug\Repositories\AdminsettingRepository;
 
 /**
  * Class SystemController

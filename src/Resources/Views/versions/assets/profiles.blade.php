@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'framework_assets'])
+@extends('btybug::layouts.mTabs',['index'=>'framework_assets'])
 @section('tab')
     <div class="container">
         <h2>Profiles</h2>
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    @include('cms::_partials.delete_modal')
+    @include('btybug::_partials.delete_modal')
     @include('uploads::assets._partials.upload_js_modal')
 @stop
 

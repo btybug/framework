@@ -22,28 +22,6 @@
             </ul>
         </div>
     </div>
-    {{--<div class="col-md-12">--}}
-    {{--<h4>Tab DropDown</h4>--}}
-    {{--<h5>bty-tab-dropdown</h5>--}}
-    {{--<div class="bty-tab-dropdown">--}}
-    {{--<ul>--}}
-    {{--<li class="active"><a href="#" target="_blank"><i class="fa fa-fw fa-home"></i>Tab</a></li>--}}
-    {{--<li class="has-sub"><a href="#"><i class="fa fa-fw fa-bars"></i>Tab 2</a>--}}
-    {{--<ul>--}}
-    {{--<li class="has-sub"><a href="#">Tab 2.1</a>--}}
-    {{--<ul>--}}
-    {{--<li><a href="#">Tab 2</a></li>--}}
-    {{--<li><a href="#">Tab 2</a></li>--}}
-    {{--</ul>--}}
-    {{--</li>--}}
-    {{--<li><a href="#">Tab 2.2</a></li>--}}
-    {{--</ul>--}}
-    {{--</li>--}}
-    {{--<li><a href="#"><i class="fa fa-fw fa-cog"></i>Tab 3</a></li>--}}
-    {{--<li><a href="#"><i class="fa fa-fw fa-phone"></i>Tab 4</a></li>--}}
-    {{--</ul>--}}
-    {{--</div>--}}
-    {{--</div>--}}
     <div class="col-md-12">
         <h4>Tab 3</h4>
         <h5>bty-tab3</h5>

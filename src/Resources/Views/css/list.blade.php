@@ -1,4 +1,4 @@
-@extends('cms::layouts.admin')
+@extends('btybug::layouts.admin')
 @section('content')
     <div class="main_lay_cont">
         <div class="row for_title_row">
@@ -15,7 +15,7 @@
     </div>
 @stop
 @section('CSS')
-    {!! HTML::style('public/css/bty.css') !!}
+    {!! HTML::style('public/css/bty.css?v='.rand(1111,9999)) !!}
     {!! HTML::style('public/css/new-store.css') !!}
     <style>
         .main_lay_cont{
@@ -24,4 +24,5 @@
     </style>
 @stop
 @section('JS')
+    {!! HTML::script('public/js/bty.js?v='.rand(1111,9999)) !!}
 @stop
